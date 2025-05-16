@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhavya T.S - Aspiring Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS for advanced styling and colorful effects */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1a1a2e; /* Dark blue-purple base */
+            color: #e0e0e0; /* Light grey for text */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* --- Vibrant Gradient Backgrounds --- */
+        .hero-bg {
+            background: linear-gradient(135deg, #6a0dad 0%, #c70067 50%, #ff7f50 100%);
+            /* Deep Purple to Magenta to Coral */
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .section-bg-1 {
+            background: linear-gradient(120deg, #16222A 0%, #3A6073 100%); /* Dark Blue to Teal */
+        }
+        .section-bg-2 {
+            background: linear-gradient(120deg, #3A6073 0%, #16222A 100%); /* Teal to Dark Blue */
+        }
+
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- Navigation Bar Styling --- */
+        nav {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        nav.scrolled {
+            background-color: rgba(26, 26, 46, 0.85); /* Slightly transparent dark blue-purple */
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* --- Typing Animation --- */
+        .typing-text::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+            color: #FFD700; /* Sunny Yellow cursor */
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* --- Section Title Styling --- */
+        .section-title {
+            font-size: 2.5rem; /* Responsive font size in Tailwind */
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            color: #fff; /* White for contrast on dark backgrounds */
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #FF69B4, #FFD700); /* Pink to Yellow */
+            border-radius: 2px;
+        }
+
+        /* --- Skill Item Styling --- */
+        .skill-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skill-item:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .skill-item i {
+            background: -webkit-linear-gradient(#FF69B4, #00FFFF); /* Pink to Cyan */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- Project Card Styling --- */
+        .project-card {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-10px) rotateX(5deg) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+        .project-card img {
+            transition: transform 0.4s ease;
+        }
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+        .project-tag {
+            background-color: #FF69B4; /* Bright Pink */
+            color: #1a1a2e;
+        }
+
+        /* --- Button Styling --- */
+        .btn-primary {
+            background: linear-gradient(90deg, #FF69B4, #c70067); /* Pink to Magenta */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px; /* Pill shape */
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 0.5s ease;
+            background-size: 200% auto;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+        }
+        .btn-primary:hover {
+            background-position: right center; /* Change gradient direction */
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.6);
+        }
+        .btn-secondary {
+            border: 2px solid #00FFFF; /* Electric Blue */
+            color: #00FFFF;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background-color: #00FFFF;
+            color: #1a1a2e;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+        }
+
+        /* --- Scroll Animations --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Scroll to Top Button --- */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #FF69B4, #FFD700); /* Pink to Yellow */
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none; /* Hidden by default */
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: background 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+        }
+        #scrollToTopBtn:hover {
+            transform: scale(1.1) translateY(-3px);
+            background: linear-gradient(45deg, #FFD700, #FF69B4); /* Yellow to Pink */
+        }
+
+        /* Custom scrollbar for a more polished look (Webkit browsers) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(#FF69B4, #00FFFF); /* Pink to Cyan */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(#00FFFF, #FF69B4); /* Cyan to Pink */
+        }
+
+        /* Glassmorphism effect for cards/sections (optional, can be added to specific classes) */
+        .glassmorphic {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer styling */
+        footer {
+            background: #0f0f1a; /* Even darker shade for footer */
+        }
+        footer a:hover i {
+            color: #FFD700; /* Sunny Yellow on hover */
+            transform: scale(1.2);
+        }
+        footer a i {
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav id="navbar" class="fixed w-full top-0 z-50 py-3 md:py-4">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+            <a href="#" class="text-2xl md:text-3xl font-bold tracking-tight" style="background: -webkit-linear-gradient(#00FFFF, #FF69B4); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                Bhavya T.S
+            </a>
+            <div class="space-x-4 md:space-x-6 text-sm md:text-base">
+                <a href="#about" class="hover:text-[#FF69B4] transition duration-300">About</a>
+                <a href="#skills" class="hover:text-[#FF69B4] transition duration-300">Skills</a>
+                <a href="#projects" class="hover:text-[#FF69B4] transition duration-300">Projects</a>
+                <a href="#education" class="hover:text-[#FF69B4] transition duration-300">Education</a>
+                <a href="#contact" class="hover:text-[#FF69B4] transition duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-center px-4 pt-20 md:pt-0">
+        <div class="max-w-3xl">
+            <img src="images/photo.png" alt="Bhavya T.S" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full border-4 border-white shadow-xl mb-6">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-white">
+                Hi, I'm Bhavya T.S
+            </h1>
+            <p class="text-xl sm:text-2xl md:text-3xl mb-8 text-gray-200">
+                An <span class="typing-text font-semibold" style="color: #FFD700;"></span>
+            </p>
+            <p class="text-md md:text-lg text-gray-300 mb-10 max-w-xl mx-auto">
+                A passionate 3rd-year Computer Engineering student, exploring the fascinating worlds of web development and artificial intelligence.
+            </p>
+            <div>
+                <a href="#projects" class="btn-primary mr-4 mb-4 sm:mb-0">View My Work</a>
+                <a href="#contact" class="btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-16 md:py-24 section-bg-1 reveal">
+        <div class="container mx-auto px-4 md:px-6 text-center">
+            <h2 class="section-title mb-12">About Me</h2>
+            <div class="max-w-3xl mx-auto text-gray-300 text-lg md:text-xl leading-relaxed space-y-6">
+                <p>
+                    Hello! I'm Bhavya, a dedicated and curious Computer Engineering student currently in my third year at Visvesvaraya Technological University. My journey into technology is driven by a fascination for how software can solve real-world problems and create impactful experiences.
+                </p>
+                <p>
+                    I thrive on learning new technologies and am particularly drawn to the creative possibilities of <strong class="text-[#00FFFF]">full-stack web development</strong> and the innovative potential of <strong class="text-[#FF69B4]">Artificial Intelligence</strong>. I enjoy breaking down complex problems and building elegant, efficient solutions.
+                </p>
+                <p>
+                    When I'm not coding or studying, you might find me exploring new tech blogs, contributing to open-source projects, or sketching out ideas for my next digital creation. I'm always eager to collaborate and learn from others in this ever-evolving field!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-16 md:py-24 section-bg-2 reveal">
+        <div class="container mx-auto px-4 md:px-6 text-center">
+            <h2 class="section-title mb-16">My Skill Set</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8">
+                <div class="skill-item p-6 rounded-xl text-center">
+                    <i class="fab fa-python text-5xl mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white">Python</h3>
+                </div>
+                <div class="skill-item p-6 rounded-xl text-center">
+                    <i class="fab fa-java text-5xl mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white">Java</h3>
+                </div>
+                <div class="skill-item p-6 rounded-xl text-center">
+                    <i class="fab fa-js-square text-5xl mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white">JavaScript</h3>
+                </div>
+                <div class="skill-item p-6 rounded-xl text-center">
+                    <i class="fab fa-html5 text-5xl mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white">HTML5</h3>
+                </div>
+                <div class="skill-item p-6 rounded-xl text-center">
+                    <i class="fab fa-css3-alt text-5xl mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white">CSS3</h3>
+                </div>
+                <div class="skill-item p-6 rounded-xl text-center">
+                    <i class="fab fa-react text-5xl mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white">React</h3>
+                </div>
+                <div class="skill-item p-6 rounded-xl text-center">
+                    <i class="fab fa-node-js text-5xl mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white">Node.js</h3>
+                </div>
+                <div class="skill-item p-6 rounded-xl text-center">
+                    <i class="fas fa-database text-5xl mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white">SQL/NoSQL</h3>
+                </div>
+                 <div class="skill-item p-6 rounded-xl text-center">
+                    <i class="fas fa-brain text-5xl mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white">AI/ML Basics</h3>
+                </div>
+                <div class="skill-item p-6 rounded-xl text-center">
+                    <i class="fab fa-git-alt text-5xl mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white">Git & GitHub</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-16 md:py-24 section-bg-1 reveal">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="section-title text-center mb-16">Featured Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                <div class="project-card rounded-xl shadow-2xl">
+                    <img src="https://placehold.co/600x400/6A0DAD/FFFFFF?text=EcoTrack+App" alt="EcoTrack App" class="w-full h-56 object-cover rounded-t-xl">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3 text-white">EcoTrack Web App</h3>
+                        <p class="text-gray-300 mb-4 text-sm">A responsive web application to help users track and reduce their personal carbon footprint. Features data visualization and tips for sustainable living.</p>
+                        <div class="mb-4">
+                            <span class="project-tag text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">React</span>
+                            <span class="project-tag text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Node.js</span>
+                            <span class="project-tag text-xs font-semibold px-2.5 py-0.5 rounded-full">MongoDB</span>
+                        </div>
+                        <a href="#" class="inline-block btn-secondary text-sm !px-6 !py-2">View Demo <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                <div class="project-card rounded-xl shadow-2xl">
+                    <img src="https://placehold.co/600x400/C70067/FFFFFF?text=AI+Art+Generator" alt="AI Art Generator" class="w-full h-56 object-cover rounded-t-xl">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3 text-white">AI Art Generator</h3>
+                        <p class="text-gray-300 mb-4 text-sm">A Python-based tool leveraging Generative Adversarial Networks (GANs) to create unique, abstract digital art pieces from textual prompts.</p>
+                         <div class="mb-4">
+                            <span class="project-tag text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Python</span>
+                            <span class="project-tag text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">TensorFlow</span>
+                            <span class="project-tag text-xs font-semibold px-2.5 py-0.5 rounded-full">GANs</span>
+                        </div>
+                        <a href="#" class="inline-block btn-secondary text-sm !px-6 !py-2">View Code <i class="fab fa-github ml-1"></i></a>
+                    </div>
+                </div>
+                <div class="project-card rounded-xl shadow-2xl">
+                    <img src="https://placehold.co/600x400/FF7F50/FFFFFF?text=StudyBuddy+Platform" alt="StudyBuddy Platform" class="w-full h-56 object-cover rounded-t-xl">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3 text-white">StudyBuddy Connect</h3>
+                        <p class="text-gray-300 mb-4 text-sm">A mobile-first platform designed to connect students with compatible study partners based on subjects, availability, and learning styles.</p>
+                        <div class="mb-4">
+                            <span class="project-tag text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">HTML/CSS</span>
+                            <span class="project-tag text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">JavaScript</span>
+                            <span class="project-tag text-xs font-semibold px-2.5 py-0.5 rounded-full">Firebase</span>
+                        </div>
+                        <a href="#" class="inline-block btn-secondary text-sm !px-6 !py-2">Explore <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="py-16 md:py-24 section-bg-2 reveal">
+        <div class="container mx-auto px-4 md:px-6 text-center">
+            <h2 class="section-title mb-12">My Education</h2>
+            <div class="max-w-2xl mx-auto glassmorphic p-8 md:p-10 rounded-xl shadow-xl border border-gray-700">
+                <div class="flex items-center justify-center mb-4">
+                     <i class="fas fa-graduation-cap text-4xl text-[#00FFFF] mr-4"></i>
+                     <h3 class="text-2xl md:text-3xl font-semibold text-white">Bachelor of Engineering</h3>
+                </div>
+                <p class="text-lg md:text-xl text-gray-300 mb-1">Computer Science & Engineering</p>
+                <p class="text-md md:text-lg text-[#FFD700] font-medium mb-2">Visvesvaraya Technological University, Bengaluru</p>
+                <p class="text-gray-400">Expected Graduation: 2026</p>
+                <p class="text-gray-300 mt-4">
+                    Relevant Coursework: Data Structures & Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, Computer Networks, Web Technologies, Introduction to AI.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 md:py-24 section-bg-1 reveal">
+        <div class="container mx-auto px-4 md:px-6 text-center">
+            <h2 class="section-title mb-12">Let's Connect!</h2>
+            <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-xl mx-auto">
+                I'm always excited to discuss new projects, creative ideas, or opportunities to collaborate. Feel free to reach out!
+            </p>
+            <div class="max-w-md mx-auto">
+                <form action="#" method="POST" class="space-y-6 glassmorphic p-8 rounded-xl shadow-2xl">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-200 text-left mb-1">Full Name</label>
+                        <input type="text" name="name" id="name" autocomplete="name" class="mt-1 block w-full px-4 py-3 rounded-md shadow-sm focus:ring-[#00FFFF] focus:border-[#00FFFF] bg-gray-700 bg-opacity-50 border-gray-600 text-white placeholder-gray-400" placeholder="Your Name">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-200 text-left mb-1">Email Address</label>
+                        <input type="email" name="email" id="email" autocomplete="email" class="mt-1 block w-full px-4 py-3 rounded-md shadow-sm focus:ring-[#00FFFF] focus:border-[#00FFFF] bg-gray-700 bg-opacity-50 border-gray-600 text-white placeholder-gray-400" placeholder="you@example.com">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-200 text-left mb-1">Message</label>
+                        <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-4 py-3 rounded-md shadow-sm focus:ring-[#00FFFF] focus:border-[#00FFFF] bg-gray-700 bg-opacity-50 border-gray-600 text-white placeholder-gray-400" placeholder="Your message..."></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full btn-primary py-3">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+                <div class="mt-10">
+                    <p class="text-gray-300 mb-3">Or connect with me on:</p>
+                    <div class="flex justify-center space-x-6">
+                        <a href="mailto:bhavya.ts@example.com" class="text-gray-400 hover:text-[#FF69B4] transition duration-300">
+                            <i class="fas fa-envelope text-3xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/bhavyats" target="_blank" class="text-gray-400 hover:text-[#FF69B4] transition duration-300">
+                            <i class="fab fa-linkedin text-3xl"></i>
+                        </a>
+                        <a href="https://github.com/bhavyats" target="_blank" class="text-gray-400 hover:text-[#FF69B4] transition duration-300">
+                            <i class="fab fa-github text-3xl"></i>
+                        </a>
+                        <a href="https://twitter.com/bhavyats" target="_blank" class="text-gray-400 hover:text-[#FF69B4] transition duration-300">
+                            <i class="fab fa-twitter text-3xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 text-center">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex justify-center space-x-5 mb-4">
+                <a href="mailto:bhavya.ts@example.com" class="text-gray-500 hover:text-[#FFD700]"><i class="fas fa-envelope text-xl"></i></a>
+                <a href="https://www.linkedin.com/in/bhavyats" target="_blank" class="text-gray-500 hover:text-[#FFD700]"><i class="fab fa-linkedin text-xl"></i></a>
+                <a href="https://github.com/bhavyats" target="_blank" class="text-gray-500 hover:text-[#FFD700]"><i class="fab fa-github text-xl"></i></a>
+            </div>
+            <p class="text-gray-500 text-sm">
+                &copy; <span id="currentYear"></span> Bhavya T.S. Crafted with <i class="fas fa-heart text-red-500"></i> and lots of <i class="fas fa-coffee text-yellow-600"></i>.
+            </p>
+            <p class="text-xs text-gray-600 mt-1">Inspired by modern web trends. Designed to impress!</p>
+        </div>
+    </footer>
+
+    <button id="scrollToTopBtn" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // JavaScript for interactions and animations
+
+        // --- Sticky Navbar ---
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // --- Typing Animation ---
+        const typingTextElement = document.querySelector('.typing-text');
+        const roles = ["Aspiring Full-Stack Developer", "AI Enthusiast", "Creative Problem Solver", "Tech Innovator"];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let currentRole = "";
+        let isDeleting = false;
+
+        function type() {
+            currentRole = roles[roleIndex];
+            if (isDeleting) {
+                typingTextElement.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingTextElement.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                setTimeout(() => isDeleting = true, 2000); // Pause at end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+            }
+
+            const typeSpeed = isDeleting ? 75 : 150;
+            setTimeout(type, typeSpeed);
+        }
+        document.addEventListener('DOMContentLoaded', type); // Start typing animation on load
+
+        // --- Smooth Scrolling for Nav Links ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // --- Scroll Reveal Animation ---
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Optional: unobserve after revealing to save resources
+                    // revealObserver.unobserve(entry.target);
+                } else {
+                    // Optional: remove 'visible' to re-trigger animation on scroll up
+                    // entry.target.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // --- Scroll to Top Button ---
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollToTopBtn.style.display = "flex"; // Use flex to align icon
+                scrollToTopBtn.style.opacity = "1";
+            } else {
+                scrollToTopBtn.style.opacity = "0";
+                setTimeout(() => { // Ensure fade out before hiding
+                     if (!(document.body.scrollTop > 300 || document.documentElement.scrollTop > 300)) {
+                        scrollToTopBtn.style.display = "none";
+                     }
+                }, 300);
+            }
+        };
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+
+        // --- Update Footer Year ---
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // --- Placeholder for Form Submission (Advanced: could integrate with a service like Formspree) ---
+        const contactForm = document.querySelector('#contact form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // In a real scenario, you'd collect form data and send it.
+                // For this example, we'll just show a confirmation.
+                const name = contactForm.querySelector('#name').value;
+                alert(`Thank you for your message, ${name}! (This is a demo, no email was sent.)`);
+                contactForm.reset();
+            });
+        }
+
+    </script>
+</body>
+</html>
